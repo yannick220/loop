@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <meta name="theme-color" content="#031426">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
 <title>LOOP</title>
@@ -16,7 +19,7 @@
   --shadow:0 22px 80px rgba(0,0,0,.45),0 0 38px rgba(0,130,255,.10);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#00101d;color:var(--ink);font-family:"Avenir Next","Arial Rounded MT Bold",Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#00101d;color:var(--ink);font-family:"Montserrat",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 button,input{font:inherit}
 button{cursor:pointer}
 body{display:grid;place-items:center}
@@ -35,7 +38,7 @@ body{display:grid;place-items:center}
 .header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;position:relative;z-index:5}
 .titleWrap{position:relative;min-height:54px}
 .h1{margin:0;font-size:44px;line-height:.93;font-weight:1000;letter-spacing:-2.6px;text-shadow:0 3px 0 rgba(0,0,0,.18)}
-.hand{font-family:"Bradley Hand","Comic Sans MS",cursive;font-weight:700;letter-spacing:.1px}
+.hand{font-family:"Montserrat",system-ui,sans-serif;font-style:italic;font-weight:700;letter-spacing:-.2px}
 .headerNote{font-size:15px;color:#fff;transform:rotate(-2deg);margin:3px 0 0 34px;opacity:.95}
 .crown{position:absolute;right:-32px;top:-13px;color:var(--yellow);font-size:28px;filter:drop-shadow(0 0 9px rgba(255,226,0,.65));transform:rotate(10deg)}
 .roundButton{width:48px;height:48px;border-radius:50%;border:1px solid rgba(108,175,226,.30);background:rgba(6,29,49,.84);color:white;display:grid;place-items:center;font-size:24px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.03),0 10px 24px rgba(0,0,0,.22)}
@@ -60,21 +63,53 @@ body{display:grid;place-items:center}
 .resultCard{min-width:111px;width:111px;height:154px;border-radius:21px 16px 22px 15px;padding:7px;background:linear-gradient(180deg,#0b3150,#07243d);border:1px solid rgba(65,153,216,.35);position:relative;overflow:hidden;box-shadow:0 12px 24px rgba(0,0,0,.20)}.resultCard:nth-child(2){transform:rotate(1.5deg)}.resultCard:nth-child(3){transform:rotate(-1deg)}.resultPic{height:76px;border-radius:16px 12px 15px 10px;overflow:hidden;position:relative;background:#123}.resultPic img{width:100%;height:100%;object-fit:cover}.resultBadge{position:absolute;right:5px;top:5px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--yellow);color:#071321;font-weight:1000;box-shadow:0 0 15px rgba(255,225,0,.45)}.resultCard.fail{border-color:rgba(255,73,100,.58)}.resultCard.fail .resultBadge{background:var(--red);color:white}.resultCard strong{font-size:10px;display:block;margin-top:7px;line-height:1.08}.resultCard b{display:block;color:var(--yellow);font-size:12px;margin-top:3px}.resultCard.fail b{color:#fff}.resultCard small{display:block;color:#8da7ba;font-size:9px;margin-top:1px}
 .archiveCard{min-width:139px;width:139px;border-radius:20px 15px 20px 15px;padding:7px;background:linear-gradient(180deg,#0a2c48,#061f35);border:1px solid rgba(63,143,203,.30);position:relative;box-shadow:0 12px 26px rgba(0,0,0,.20)}.archiveImage{height:82px;border-radius:15px 11px 14px 10px;overflow:hidden;background:#143}.archiveImage img{width:100%;height:100%;object-fit:cover}.archiveCard strong{display:block;font-size:11px;margin:7px 0 2px}.archiveMeta{display:flex;justify-content:space-between;color:#d8e5ee;font-size:9px}.archiveMeta b{color:var(--yellow)}
 
-.recenterButton{position:absolute;right:18px;bottom:12px;z-index:90;border:1px solid rgba(255,255,255,.24);background:rgba(5,26,45,.82);backdrop-filter:blur(14px);color:#f8fbff;border-radius:999px;padding:9px 12px;font-size:11px;font-weight:950;box-shadow:0 8px 24px rgba(0,0,0,.28),0 0 18px rgba(0,168,255,.12);display:flex;align-items:center;gap:6px;opacity:0;transform:translateY(8px) scale(.96);pointer-events:none;transition:opacity .22s,transform .22s,border-color .22s}.recenterButton.show{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}.recenterButton:active{transform:translateY(0) scale(.97)}.recenterButton .dot{width:8px;height:8px;border-radius:50%;background:var(--yellow);box-shadow:0 0 10px rgba(255,225,0,.7)}
-/* Missions */
-.missionScreen{overflow:hidden;display:flex;flex-direction:column;padding-bottom:8px}.missionScreen .header{flex:0 0 auto;margin-bottom:1px}.missionSub{text-align:center;font-size:15px;margin:-3px 0 0;transform:rotate(-1.2deg);position:relative;z-index:6}
-.stage{position:relative;flex:1 1 auto;min-height:390px;max-height:520px;margin:0 -14px;overflow:hidden;perspective:1100px;touch-action:none;isolation:isolate}
-.stage:before{content:"";position:absolute;left:50%;top:47%;width:380px;height:220px;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(0,143,255,.17) 0 30%,rgba(104,43,255,.09) 48%,transparent 72%);filter:blur(8px)}
-.orbit{position:absolute;left:50%;top:48%;width:365px;height:204px;transform:translate(-50%,-50%) rotateX(65deg);border-radius:50%;border:3px solid rgba(0,176,255,.8);box-shadow:0 0 14px rgba(0,176,255,.9),0 0 45px rgba(0,103,255,.52),inset 0 0 38px rgba(0,135,255,.22);z-index:0}.orbit:before{content:"";position:absolute;inset:18px;border-radius:50%;border:2px solid rgba(255,225,0,.33);box-shadow:0 0 20px rgba(255,225,0,.25)}.orbit:after{content:"";position:absolute;inset:-24px;border-radius:50%;border:1px dashed rgba(143,68,255,.28);animation:orbitSpin 15s linear infinite}@keyframes orbitSpin{to{transform:rotate(360deg)}}
-.orbitDot{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--yellow);box-shadow:0 0 15px var(--yellow);left:24%;top:21%;animation:pulse 1.9s ease-in-out infinite}.orbitDot.d2{left:77%;top:70%;animation-delay:.8s;background:#8e42ff;box-shadow:0 0 15px #8e42ff}.orbitDot.d3{left:55%;top:9%;animation-delay:1.2s;background:#00b8ff;box-shadow:0 0 15px #00b8ff}@keyframes pulse{50%{transform:scale(1.8);opacity:.5}}
-.loopCount{position:absolute;top:21px;left:50%;transform:translateX(-50%);z-index:20;text-align:center;color:var(--yellow);font-weight:1000;font-size:17px;text-shadow:0 0 10px rgba(255,225,0,.45)}.loopCount small{display:block;color:#fff;font-weight:800;font-size:9px;font-style:italic;margin-top:1px}
-.doodleLabel{position:absolute;z-index:22;font-family:"Bradley Hand","Comic Sans MS",cursive;color:#fff;font-weight:800;font-size:12px;line-height:1.05;text-align:center;filter:drop-shadow(0 0 5px rgba(0,0,0,.55))}.doodleLabel.left{left:12px;top:50px;transform:rotate(-7deg)}.doodleLabel.right{right:11px;top:52px;color:var(--yellow);transform:rotate(7deg)}.doodleLabel:after{content:"↘";font-size:24px;display:block;margin-top:-2px}.doodleLabel.right:after{content:"↙"}
+
+/* Missions — V5 : vraie boucle hiérarchisée */
+.missionScreen{overflow:hidden;display:flex;flex-direction:column;padding-bottom:10px}
+.missionScreen .header{flex:0 0 auto;margin-bottom:2px}
+.missionSub{text-align:center;font-size:14px;margin:0 0 7px;transform:rotate(-1deg);position:relative;z-index:6;color:#e8f4ff}
+.stage{position:relative;flex:1 1 auto;min-height:382px;max-height:500px;margin:2px -12px 10px;overflow:hidden;perspective:1250px;touch-action:none;isolation:isolate}
+.stage:before{content:"";position:absolute;left:50%;top:51%;width:410px;height:255px;transform:translate(-50%,-50%);background:radial-gradient(ellipse,rgba(0,155,255,.20) 0 28%,rgba(104,43,255,.12) 46%,transparent 72%);filter:blur(10px)}
+.stage:after{content:"";position:absolute;left:50%;top:54%;width:430px;height:155px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(ellipse,transparent 48%,rgba(0,145,255,.08) 50%,transparent 66%);pointer-events:none;z-index:0}
+.orbit{position:absolute;left:50%;top:53%;width:min(92%,410px);height:210px;transform:translate(-50%,-50%) rotateX(67deg);border-radius:50%;border:2px solid rgba(0,181,255,.70);box-shadow:0 0 14px rgba(0,181,255,.82),0 0 45px rgba(0,103,255,.42),inset 0 0 35px rgba(0,135,255,.18);z-index:0;transition:.45s cubic-bezier(.2,.8,.2,1)}
+.orbit:before{content:"";position:absolute;inset:16px;border-radius:50%;border:1.5px solid rgba(255,225,0,.28);box-shadow:0 0 18px rgba(255,225,0,.18)}
+.orbit:after{content:"";position:absolute;inset:-20px;border-radius:50%;border:1px dashed rgba(143,68,255,.24);animation:orbitSpin 17s linear infinite}@keyframes orbitSpin{to{transform:rotate(360deg)}}
+.orbitDot{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--yellow);box-shadow:0 0 14px var(--yellow);left:22%;top:20%;animation:pulse 2.1s ease-in-out infinite}.orbitDot.d2{left:78%;top:70%;animation-delay:.7s;background:#8e42ff;box-shadow:0 0 14px #8e42ff}.orbitDot.d3{left:56%;top:8%;animation-delay:1.15s;background:#00b8ff;box-shadow:0 0 14px #00b8ff}@keyframes pulse{50%{transform:scale(1.7);opacity:.45}}
+.loopTopline{position:absolute;left:14px;right:14px;top:4px;z-index:35;display:flex;align-items:center;justify-content:space-between;gap:10px;pointer-events:none}
+.loopCount{position:relative;left:auto;top:auto;transform:none;z-index:20;color:var(--yellow);font-weight:1000;font-size:14px;text-shadow:0 0 10px rgba(255,225,0,.35);pointer-events:none}.loopCount small{display:block;color:#cfe0eb;font-weight:700;font-size:8px;font-style:normal;margin-top:1px;letter-spacing:.1px}
+.viewToggle{pointer-events:auto;display:flex;padding:3px;border-radius:999px;background:rgba(4,26,45,.78);border:1px solid rgba(97,161,207,.28);backdrop-filter:blur(12px);box-shadow:0 8px 22px rgba(0,0,0,.24)}
+.viewToggle button{border:0;background:transparent;color:#9fb5c7;font-size:9px;font-weight:900;border-radius:999px;padding:7px 10px;transition:.25s}.viewToggle button.active{background:var(--yellow);color:#07121b;box-shadow:0 0 16px rgba(255,225,0,.34)}
+.viewToggle button span{opacity:.7;margin-left:3px;font-size:8px}
 .carousel{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform;z-index:3}
-.personCard{position:absolute;left:50%;top:51%;width:170px;height:242px;margin-left:-85px;margin-top:-121px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.76,.25,1),opacity .35s,filter .35s;box-shadow:0 18px 40px rgba(0,0,0,.45);border:2px solid rgba(121,157,188,.63);border-radius:27px 18px 27px 16px;overflow:hidden;background:linear-gradient(150deg,#0d3150,#071a2d);backface-visibility:hidden}.personCard:nth-child(even){border-radius:20px 29px 17px 28px}.personCard.current{border:4px solid #fffbe4;box-shadow:0 0 0 2px rgba(255,225,0,.96),0 0 28px rgba(255,225,0,.66),0 0 60px rgba(0,144,255,.30),0 20px 50px rgba(0,0,0,.52)}.personCard.current:after{content:"♛";position:absolute;right:7px;top:-5px;font-size:34px;color:var(--yellow);transform:rotate(12deg);filter:drop-shadow(0 0 8px rgba(255,225,0,.7));z-index:10}.personCard.defeated{filter:saturate(.75) brightness(.77)}.personCard.hidden{background:linear-gradient(145deg,#123958,#07192b 60%,#121d3b);border-color:rgba(105,137,168,.62)}.personCard.hidden:before{content:"?";position:absolute;inset:0;display:grid;place-items:center;color:rgba(160,184,209,.56);font-size:76px;font-weight:1000;background:radial-gradient(circle at 50% 34%,rgba(132,66,255,.22),transparent 40%)}.personCard.hidden:after{content:"MISSION\A MYSTÈRE";white-space:pre;position:absolute;left:0;right:0;bottom:18px;text-align:center;color:#d2e0eb;font-size:14px;font-weight:1000;transform:rotate(-5deg)}
-.cardPortrait{height:139px;position:relative;overflow:hidden;background:#102b45}.cardPortrait img{width:100%;height:100%;object-fit:cover;object-position:center 34%;filter:saturate(1.04) contrast(1.02)}.namePill{position:absolute;left:10px;bottom:7px;background:white;color:#0b1621;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:1000;box-shadow:0 4px 12px rgba(0,0,0,.22)}.orderPill{position:absolute;right:9px;bottom:7px;background:#09243b;color:white;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 8px;font-size:11px;font-weight:1000}.missionBody{height:103px;background:linear-gradient(180deg,#fff,#eef4f8);color:#0a1620;padding:8px 9px 9px;text-align:center;position:relative}.missionBody small{display:block;color:#5a7081;font-size:8px;font-weight:1000;letter-spacing:.9px}.missionBody strong{display:block;font-size:16px;line-height:1.02;margin-top:5px;letter-spacing:-.35px}.missionBody strong em{display:inline-block;font-style:normal;background:var(--yellow);padding:2px 6px;border-radius:9px;transform:rotate(-1deg);font-size:18px}.missionBody b{display:block;margin-top:6px;font-size:13px}.defeatStamp{position:absolute;right:8px;top:8px;width:30px;height:30px;border-radius:50%;background:var(--green);color:#052217;display:grid;place-items:center;font-weight:1000;z-index:9;border:2px solid #fff;box-shadow:0 0 16px rgba(41,223,159,.45)}
-.successArea{flex:0 0 auto;margin-top:-7px;position:relative;z-index:20}.successButton{display:flex;width:calc(100% - 26px);margin:0 auto;align-items:center;justify-content:center;gap:11px;border:none;border-radius:999px;padding:15px 18px;background:linear-gradient(180deg,#ffef25,#ffd100);color:#07121b;font-size:19px;font-weight:1000;box-shadow:0 0 0 1px rgba(255,255,255,.34),0 0 32px rgba(255,216,0,.50),inset 0 -3px 0 rgba(160,94,0,.18);transition:.25s}.successButton:active{transform:scale(.985)}.successButton:disabled{filter:saturate(.35);opacity:.72;box-shadow:none}.checkDisc{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#0c2336;color:var(--yellow);font-size:20px}.waitHint{text-align:center;color:#bdd0df;font-size:10px;height:0;overflow:hidden;opacity:0;transition:.25s}.successArea.waiting .waitHint{height:20px;opacity:1;padding-top:5px}.successArea.waiting .successButton{background:linear-gradient(180deg,#bfd0dc,#88a0b2)}
-.loopSelectorTitle{flex:0 0 auto;margin:12px 4px 7px;display:flex;justify-content:space-between;align-items:center;font-weight:1000;font-size:17px}.loopSelectorTitle b{color:var(--yellow)}
-.loopStrip{flex:0 0 auto;display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 4px}.loopStrip::-webkit-scrollbar{display:none}.loopChip{border:1px solid rgba(69,144,198,.35);min-width:143px;height:72px;border-radius:18px 13px 18px 13px;background:linear-gradient(160deg,rgba(12,50,81,.95),rgba(5,28,47,.96));color:white;padding:7px;display:grid;grid-template-columns:55px 1fr;gap:7px;text-align:left;position:relative;overflow:hidden;transition:.2s}.loopChip.selected{border-color:var(--yellow);box-shadow:0 0 19px rgba(255,225,0,.22)}.loopChip img{width:55px;height:55px;border-radius:13px 9px 13px 9px;object-fit:cover}.loopChip strong{display:block;font-size:10px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.loopChip small{display:block;font-size:8px;color:#c2d4e2;margin-top:3px}.miniProgress{position:absolute;left:69px;right:8px;bottom:8px;height:4px;border-radius:999px;background:#123c5d;overflow:hidden}.miniProgress i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--yellow),#ff9800)}
+.carousel.dragging .personCard{transition:none!important}
+.personCard{position:absolute;left:50%;top:54%;width:164px;height:234px;margin-left:-82px;margin-top:-117px;transform-style:preserve-3d;transition:transform .46s cubic-bezier(.2,.76,.25,1),opacity .34s,filter .34s,border-color .3s,box-shadow .3s;box-shadow:0 16px 38px rgba(0,0,0,.42);border:2px solid rgba(105,137,168,.58);border-radius:25px 17px 25px 15px;overflow:hidden;background:linear-gradient(150deg,#0d3150,#071a2d);backface-visibility:hidden;cursor:pointer;user-select:none}
+.personCard:nth-child(3n){border-radius:18px 27px 16px 25px}.personCard:nth-child(4n){border-radius:27px 18px 23px 19px}
+.personCard:active{filter:brightness(1.08)}
+.personCard.target{border:4px solid #fffbe4;box-shadow:0 0 0 2px rgba(255,225,0,.96),0 0 30px rgba(255,225,0,.72),0 0 58px rgba(0,144,255,.28),0 20px 50px rgba(0,0,0,.52)}
+.personCard.self{border:3px solid #6fe4ff;box-shadow:0 0 0 2px rgba(139,74,255,.48),0 0 30px rgba(0,188,255,.34),0 18px 42px rgba(0,0,0,.45)}
+.personCard.mine{border:3px solid var(--yellow);box-shadow:0 0 25px rgba(255,225,0,.30),0 18px 40px rgba(0,0,0,.44);filter:saturate(.92) brightness(.88)}
+.personCard.other{border:2px solid rgba(112,178,224,.86);box-shadow:0 0 18px rgba(62,149,214,.18),0 18px 40px rgba(0,0,0,.44);filter:saturate(.65) brightness(.76)}
+.personCard.back,.personCard.farside{background:linear-gradient(145deg,#123958 0%,#07192b 58%,#121d3b 100%);border-color:rgba(105,137,168,.52)}
+.cardBack{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;background:
+ radial-gradient(circle at 50% 38%,rgba(130,66,255,.18),transparent 38%),
+ repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 2px,transparent 2px 9px)}
+.cardBack:before{content:"∞";font-size:74px;font-weight:900;color:rgba(141,170,195,.28);text-shadow:0 0 24px rgba(0,148,255,.16);transform:rotate(-7deg)}
+.cardBack:after{content:"LOOP";position:absolute;bottom:19px;left:0;right:0;text-align:center;color:rgba(212,226,237,.55);font-size:11px;font-weight:1000;letter-spacing:2px}
+.farside .cardBack{filter:brightness(.56) saturate(.65)}
+.edgeMark{position:absolute;left:9px;top:9px;width:8px;height:8px;border-radius:50%;background:#627d91;box-shadow:0 0 8px currentColor;opacity:.85}.farside.mine .edgeMark{background:var(--yellow)}.farside.self .edgeMark{background:#64ddff}.farside.other .edgeMark{background:#6eaed7}.farside.target .edgeMark{background:var(--yellow)}
+.cardPortrait{height:136px;position:relative;overflow:hidden;background:#102b45}.cardPortrait img{width:100%;height:100%;object-fit:cover;object-position:center 35%;filter:saturate(1.03) contrast(1.02)}
+.namePill{position:absolute;left:9px;bottom:7px;background:white;color:#0b1621;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:1000;box-shadow:0 4px 12px rgba(0,0,0,.22)}
+.statusPill{position:absolute;right:8px;bottom:7px;background:#09243b;color:white;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 8px;font-size:9px;font-weight:1000}.target .statusPill{background:var(--yellow);color:#07121b;border:0}.self .statusPill{background:#5ee3ff;color:#07121b;border:0}.mine .statusPill{background:var(--yellow);color:#07121b;border:0}.other .statusPill{background:#6c91aa;color:white}
+.missionBody{height:98px;background:linear-gradient(180deg,#fff,#edf4f8);color:#0a1620;padding:8px 9px 8px;text-align:center;position:relative}.missionBody small{display:block;color:#5a7081;font-size:7px;font-weight:1000;letter-spacing:.85px}.missionBody strong{display:block;font-size:15px;line-height:1.02;margin-top:5px;letter-spacing:-.35px}.missionBody strong em{display:inline-block;font-style:normal;background:var(--yellow);padding:2px 6px;border-radius:8px;transform:rotate(-1deg);font-size:17px}.missionBody b{display:block;margin-top:6px;font-size:12px}.mine .missionBody,.other .missionBody,.self .missionBody{background:linear-gradient(180deg,#f5f8fa,#dfe9ef)}
+.target:after{content:"♛";position:absolute;right:6px;top:-6px;font-size:32px;color:var(--yellow);transform:rotate(12deg);filter:drop-shadow(0 0 8px rgba(255,225,0,.7));z-index:10}
+.historyStamp{position:absolute;right:8px;top:8px;min-width:28px;height:28px;border-radius:50%;padding:0 6px;display:grid;place-items:center;font-size:11px;font-weight:1000;z-index:9;border:2px solid rgba(255,255,255,.85);box-shadow:0 0 14px rgba(0,0,0,.25)}.mine .historyStamp{background:var(--yellow);color:#07121b}.other .historyStamp{background:#6a98b6;color:white}.self .historyStamp{background:#5ee3ff;color:#07121b}
+.targetBeacon{position:absolute;right:18px;bottom:22px;z-index:95;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,225,0,.45);background:radial-gradient(circle at 45% 42%,rgba(255,225,0,.18),rgba(5,28,47,.90) 62%);color:var(--yellow);display:grid;place-items:center;box-shadow:0 0 0 1px rgba(255,255,255,.04),0 0 25px rgba(255,225,0,.18),0 12px 28px rgba(0,0,0,.30);opacity:0;transform:scale(.65);pointer-events:none;transition:.25s cubic-bezier(.2,.8,.2,1)}
+.targetBeacon.show{opacity:1;transform:scale(1);pointer-events:auto}.targetBeacon:before{content:"";position:absolute;width:34px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,225,0,.50));right:43px;top:50%;transform:rotate(-8deg);transform-origin:right}.targetBeacon span{font-size:24px;line-height:1;filter:drop-shadow(0 0 8px rgba(255,225,0,.65))}.targetBeacon small{position:absolute;top:55px;white-space:nowrap;color:#ffe95c;font-size:7px;font-weight:1000;letter-spacing:.7px;text-transform:uppercase;text-shadow:0 2px 5px #000}
+.stageHint{position:absolute;left:16px;bottom:18px;z-index:20;color:#8ea9bc;font-size:8px;font-weight:700;letter-spacing:.1px;pointer-events:none}.stageHint b{color:#d8e8f3}
+.successArea{flex:0 0 auto;margin:2px 0 0;position:relative;z-index:20}.successButton{display:flex;width:calc(100% - 22px);margin:0 auto;align-items:center;justify-content:center;gap:11px;border:none;border-radius:999px;padding:14px 18px;background:linear-gradient(180deg,#ffef25,#ffd100);color:#07121b;font-size:18px;font-weight:1000;box-shadow:0 0 0 1px rgba(255,255,255,.34),0 0 30px rgba(255,216,0,.44),inset 0 -3px 0 rgba(160,94,0,.18);transition:.25s}.successButton:active{transform:scale(.985)}.successButton:disabled{filter:saturate(.35);opacity:.72;box-shadow:none}.checkDisc{width:33px;height:33px;border-radius:50%;display:grid;place-items:center;background:#0c2336;color:var(--yellow);font-size:19px}.waitHint{text-align:center;color:#bdd0df;font-size:9px;height:0;overflow:hidden;opacity:0;transition:.25s}.successArea.waiting .waitHint{height:19px;opacity:1;padding-top:5px}.successArea.waiting .successButton{background:linear-gradient(180deg,#bfd0dc,#88a0b2)}
+.loopSelectorTitle{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;margin:13px 2px 7px;font-size:16px;font-weight:1000;letter-spacing:-.45px}.loopSelectorTitle b{color:var(--yellow)}
+.loopStrip{flex:0 0 auto;display:flex;gap:9px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 5px}.loopStrip::-webkit-scrollbar{display:none}.loopChip{border:1px solid rgba(69,144,198,.35);min-width:148px;height:72px;border-radius:19px 14px 19px 14px;background:linear-gradient(160deg,rgba(12,50,81,.95),rgba(5,28,47,.96));color:white;padding:7px;display:grid;grid-template-columns:55px 1fr;gap:8px;text-align:left;position:relative;overflow:hidden;transition:.22s}.loopChip.selected{border-color:var(--yellow);box-shadow:0 0 19px rgba(255,225,0,.22)}.loopChip img{width:55px;height:55px;border-radius:13px 9px 13px 9px;object-fit:cover}.loopChip strong{display:block;font-size:10px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.loopChip small{display:block;font-size:8px;color:#c2d4e2;margin-top:3px;line-height:1.15}.miniProgress{position:absolute;left:70px;right:8px;bottom:8px;height:4px;border-radius:999px;background:#123c5d;overflow:hidden}.miniProgress i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--yellow),#ff9800)}
+
 /* LOOP world */
 .worldHero{position:relative;min-height:164px;border-radius:27px 18px 28px 18px;padding:20px 156px 18px 18px;overflow:hidden;background:
  radial-gradient(circle at 77% 42%,rgba(255,230,0,.30),transparent 23%),
@@ -83,14 +118,14 @@ body{display:grid;place-items:center}
 .inviteList{display:flex;flex-direction:column;gap:8px}.inviteCard{min-height:90px;border-radius:20px 14px 20px 14px;padding:8px;display:grid;grid-template-columns:88px 1fr auto;gap:9px;align-items:center;background:linear-gradient(170deg,rgba(12,48,78,.96),rgba(5,29,49,.97));border:1px solid rgba(68,143,198,.32);position:relative;overflow:hidden}.inviteCard img{width:88px;height:72px;border-radius:15px 10px 15px 10px;object-fit:cover}.inviteInfo strong{display:block;font-size:14px}.inviteInfo small{display:block;color:#bfd2e0;font-size:9px;margin-top:3px}.miniFaces{display:flex;margin-top:7px}.miniFaces img{width:23px;height:23px;border-radius:50%;border:2px solid #08243a;margin-left:-5px;object-fit:cover}.miniFaces img:first-child{margin-left:0}.inviteActions{display:flex;flex-direction:column;gap:6px}.joinBtn,.refuseBtn{border-radius:999px;padding:8px 11px;font-size:10px;font-weight:1000;white-space:nowrap}.joinBtn{border:none;background:var(--yellow);color:#07121b;box-shadow:0 0 15px rgba(255,225,0,.30)}.refuseBtn{border:1px solid rgba(113,169,211,.38);background:#082b47;color:#edf7ff}
 .momentStrip{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 2px 7px}.momentStrip::-webkit-scrollbar{display:none}.momentCard{min-width:132px;width:132px;border-radius:20px 14px 21px 14px;padding:7px;background:linear-gradient(180deg,#0a2e4b,#061f35);border:1px solid rgba(66,144,202,.30);box-shadow:0 12px 25px rgba(0,0,0,.18)}.momentCard img{width:100%;height:78px;border-radius:15px 10px 15px 10px;object-fit:cover}.momentCard strong{display:block;font-size:11px;margin-top:6px;line-height:1.08}.momentCard small{display:block;color:#c4d6e4;font-size:9px;margin-top:4px}.momentCard small b{color:var(--yellow)}
 /* bottom carousel nav */
-.navDock{position:absolute;left:0;right:0;bottom:0;height:86px;padding-bottom:max(8px,env(safe-area-inset-bottom));z-index:40;background:linear-gradient(180deg,rgba(4,22,37,.35),rgba(5,29,48,.96) 28%,rgba(7,36,58,.99));border-top:1px solid rgba(66,133,182,.22);border-radius:30px 30px 0 0;box-shadow:0 -18px 45px rgba(0,0,0,.18)}.navRail{position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}.navItem{position:absolute;left:50%;top:8px;width:88px;height:66px;margin-left:-44px;border:none;background:none;color:#d5e2ee;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;will-change:transform,opacity}.navItem.center{color:var(--yellow)}.navIcon{font-size:31px;line-height:1;filter:drop-shadow(0 0 0 transparent);transition:.3s}.navItem.center .navIcon{filter:drop-shadow(0 0 13px rgba(255,225,0,.72));transform:scale(1.08)}.navLabel{font-size:11px;font-weight:900;margin-top:5px}.navItem.center .navLabel{font-size:14px}.navItem.center:after{content:"";position:absolute;bottom:0;width:42px;height:4px;border-radius:999px;background:var(--yellow);box-shadow:0 0 13px rgba(255,225,0,.75)}
+.navDock{position:absolute;left:0;right:0;bottom:0;height:86px;padding-bottom:max(8px,env(safe-area-inset-bottom));z-index:40;background:linear-gradient(180deg,rgba(4,22,37,.35),rgba(5,29,48,.96) 28%,rgba(7,36,58,.99));border-top:1px solid rgba(66,133,182,.22);border-radius:30px 30px 0 0;box-shadow:0 -18px 45px rgba(0,0,0,.18);overflow:hidden}.navRail{position:relative;width:100%;height:100%;overflow:hidden}.navItem{position:absolute;left:50%;top:0;width:92px;height:68px;margin-left:-46px;border:none;background:none;color:#d5e2ee;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;will-change:transform,opacity;transform-origin:50% 50%}.navIcon{font-size:31px;line-height:1;will-change:filter}.navLabel{font-size:11px;font-weight:900;margin-top:5px}.navUnderline{position:absolute;left:50%;bottom:0;width:42px;height:4px;border-radius:999px;background:var(--yellow);box-shadow:0 0 13px rgba(255,225,0,.75);opacity:0;transform:translateX(-50%) scaleX(.4);transform-origin:center}
 /* notifications/modals */
 .toast{position:absolute;z-index:100;left:50%;top:calc(max(14px,env(safe-area-inset-top)) + 9px);width:calc(100% - 34px);transform:translate(-50%,-130px);opacity:0;transition:.38s cubic-bezier(.2,.8,.2,1);border-radius:21px 15px 21px 15px;padding:12px 14px;background:rgba(6,29,49,.96);border:1px solid rgba(85,166,222,.39);box-shadow:0 18px 50px rgba(0,0,0,.45),0 0 26px rgba(0,127,255,.13);display:flex;gap:10px;align-items:center}.toast.show{transform:translate(-50%,0);opacity:1}.toastIcon{width:38px;height:38px;border-radius:14px 10px 14px 10px;background:var(--yellow);color:#07121b;display:grid;place-items:center;font-size:20px}.toast strong{font-size:12px;display:block}.toast span{font-size:10px;color:#b9ccda;display:block;margin-top:2px;line-height:1.2}
 .modalShade{position:absolute;inset:0;z-index:120;background:rgba(0,8,16,.68);backdrop-filter:blur(9px);display:none;align-items:flex-end;justify-content:center;padding:20px 14px calc(20px + env(safe-area-inset-bottom))}.modalShade.show{display:flex}.targetSheet{width:100%;border-radius:30px 22px 30px 22px;padding:18px;background:linear-gradient(165deg,#0e395d,#051d32 70%);border:1px solid rgba(81,164,222,.37);box-shadow:0 28px 80px rgba(0,0,0,.58),0 0 35px rgba(0,133,255,.18);animation:sheetUp .35s cubic-bezier(.2,.85,.2,1)}@keyframes sheetUp{from{transform:translateY(50px);opacity:0}}
 .remotePhone{display:flex;gap:11px;align-items:center;margin-bottom:14px}.remoteAvatar{width:58px;height:67px;border-radius:23px 17px 23px 17px;object-fit:cover;border:2px solid var(--yellow)}.remotePhone h3{margin:0;font-size:21px;letter-spacing:-.7px}.remotePhone p{margin:4px 0 0;color:#bfd0dc;font-size:10px}.claimCard{border-radius:21px 15px 21px 15px;padding:13px;background:rgba(5,25,43,.72);border:1px solid rgba(89,155,203,.27);text-align:center}.claimCard small{color:#9fb7c9;font-size:9px;letter-spacing:.7px;font-weight:900}.claimCard strong{display:block;font-size:17px;margin-top:6px}.sheetActions{display:grid;grid-template-columns:.8fr 1.2fr;gap:9px;margin-top:13px}.sheetActions button{border-radius:999px;padding:13px;border:none;font-weight:1000}.contest{background:#0b2c48;color:white;border:1px solid rgba(97,157,201,.38)!important}.confirm{background:var(--yellow);color:#07121b;box-shadow:0 0 22px rgba(255,225,0,.30)}.fairStep{display:none;text-align:center}.fairStep.show{display:block}.fairIcon{width:76px;height:76px;border-radius:50%;margin:2px auto 11px;display:grid;place-items:center;font-size:38px;background:linear-gradient(145deg,#2be5a2,#0b9e6d);color:#04251a;box-shadow:0 0 32px rgba(43,229,162,.28)}.fairStep h3{font-size:22px;margin:0}.fairStep p{font-size:12px;line-height:1.4;color:#c6d6e2}.fairButton{width:100%;margin-top:8px;border:none;background:var(--yellow);color:#07121b;border-radius:999px;padding:14px;font-weight:1000}.hide{display:none!important}
 .spark{position:absolute;width:7px;height:7px;border-radius:2px;pointer-events:none;z-index:50;background:var(--yellow);animation:spark .9s ease-out forwards}@keyframes spark{to{transform:translate(var(--dx),var(--dy)) rotate(240deg) scale(.2);opacity:0}}
 /* landscape: let the loop breathe */
-@media (orientation:landscape) and (max-height:600px){.appShell{width:100vw;max-width:none}.viewport{bottom:72px}.navDock{height:72px}.navItem{top:2px;height:60px}.screen{padding-top:8px}.missionScreen .header{position:absolute;left:18px;top:10px;z-index:30}.missionScreen .missionSub{position:absolute;left:19px;top:61px;z-index:30}.stage{min-height:100%;max-height:none;margin:0}.successArea{position:absolute;right:18px;bottom:20px;width:300px}.loopSelectorTitle{position:absolute;left:18px;bottom:89px;z-index:25}.loopStrip{position:absolute;left:16px;bottom:15px;width:50%;z-index:25}.stage .orbit{width:500px;height:250px}.personCard{width:164px;height:230px;margin-left:-82px;margin-top:-115px}}
+@media (orientation:landscape) and (max-height:600px){.appShell{width:100vw;max-width:none}.viewport{bottom:72px}.navDock{height:72px}.navItem{top:2px;height:60px}.screen{padding-top:8px}.missionScreen .header{position:absolute;left:18px;top:10px;z-index:30}.missionScreen .missionSub{position:absolute;left:19px;top:61px;z-index:30}.stage{min-height:100%;max-height:none;margin:0}.successArea{position:absolute;right:18px;bottom:20px;width:300px}.loopSelectorTitle{position:absolute;left:18px;bottom:89px;z-index:25}.loopStrip{position:absolute;left:16px;bottom:15px;width:50%;z-index:25}.stage .orbit{width:500px;height:250px}.personCard{width:160px;height:226px;margin-left:-80px;margin-top:-113px}}
 </style>
 </head>
 <body>
@@ -108,7 +143,7 @@ body{display:grid;place-items:center}
         <div class="profileHero">
           <div class="scribbleProfile hand">Toujours<br>plus de loops !</div>
           <span class="doodleCrown">♛</span>
-          <img class="profileAvatar" src="assets/avatar_2.png" alt="Alex">
+          <img class="profileAvatar" src="assets/photo_2.jpg" alt="Alex">
           <span class="onlineDot"></span>
           <div class="profileName">Alex R.</div>
           <div class="profileRank">♛ Roi des défis</div>
@@ -125,10 +160,10 @@ body{display:grid;place-items:center}
         </div>
         <div class="sectionTitle"><span>Derniers résultats</span><button class="seeAll">Voir tout ›</button></div>
         <div class="scrollStrip">
-          <div class="resultCard"><div class="resultPic"><img src="assets/avatar_0.png"><span class="resultBadge">✓</span></div><strong>Faire dire « incroyable »</strong><b>+100 pts</b><small>il y a 2 h</small></div>
-          <div class="resultCard"><div class="resultPic"><img src="assets/avatar_3.png"><span class="resultBadge">✓</span></div><strong>Faire demander l’heure</strong><b>+120 pts</b><small>hier</small></div>
-          <div class="resultCard fail"><div class="resultPic"><img src="assets/avatar_5.png"><span class="resultBadge">×</span></div><strong>Faire applaudir 3 fois</strong><b>0 pt</b><small>il y a 2 j</small></div>
-          <div class="resultCard"><div class="resultPic"><img src="assets/avatar_1.png"><span class="resultBadge">✓</span></div><strong>Faire dire « menu »</strong><b>+100 pts</b><small>il y a 4 j</small></div>
+          <div class="resultCard"><div class="resultPic"><img src="assets/photo_0.jpg"><span class="resultBadge">✓</span></div><strong>Faire dire « incroyable »</strong><b>+100 pts</b><small>il y a 2 h</small></div>
+          <div class="resultCard"><div class="resultPic"><img src="assets/photo_3.jpg"><span class="resultBadge">✓</span></div><strong>Faire demander l’heure</strong><b>+120 pts</b><small>hier</small></div>
+          <div class="resultCard fail"><div class="resultPic"><img src="assets/photo_5.jpg"><span class="resultBadge">×</span></div><strong>Faire applaudir 3 fois</strong><b>0 pt</b><small>il y a 2 j</small></div>
+          <div class="resultCard"><div class="resultPic"><img src="assets/photo_1.jpg"><span class="resultBadge">✓</span></div><strong>Faire dire « menu »</strong><b>+100 pts</b><small>il y a 4 j</small></div>
         </div>
         <div class="sectionTitle"><span>Mes loops passées</span><button class="seeAll">Voir tout ›</button></div>
         <div class="scrollStrip">
@@ -146,12 +181,17 @@ body{display:grid;place-items:center}
         </div>
         <div class="missionSub hand">Fais tourner la loop !</div>
         <div class="stage" id="stage">
-          <div class="orbit"><i class="orbitDot"></i><i class="orbitDot d2"></i><i class="orbitDot d3"></i></div>
-          <div class="loopCount" id="loopCount">3 / 8<small>dans cette loop</small></div>
-          <div class="doodleLabel left">DÉJÀ FAIT</div>
-          <div class="doodleLabel right">À SUIVRE</div>
+          <div class="loopTopline">
+            <div class="loopCount" id="loopCount">18 en jeu<small>sur 28 participants</small></div>
+            <div class="viewToggle" id="viewToggle">
+              <button class="active" data-mode="active">En jeu <span id="activeCount">18</span></button>
+              <button data-mode="history">Histoire <span id="historyCount">28</span></button>
+            </div>
+          </div>
+          <div class="orbit" id="orbit"><i class="orbitDot"></i><i class="orbitDot d2"></i><i class="orbitDot d3"></i></div>
           <div class="carousel" id="carousel"></div>
-          <button class="recenterButton" id="recenterButton"><span class="dot"></span>Revenir à ma mission</button>
+          <button class="targetBeacon" id="targetBeacon" aria-label="Revenir à ma cible"><span>◎</span><small>Ma cible</small></button>
+          <div class="stageHint" id="stageHint">Glisse pour parcourir · <b>touche une carte</b> pour la ramener devant</div>
         </div>
         <div class="successArea" id="successArea">
           <button class="successButton" id="successButton"><span class="checkDisc">✓</span><span>Mission réussie</span></button>
@@ -175,9 +215,9 @@ body{display:grid;place-items:center}
         </div>
         <div class="sectionTitle"><span><b>Mes</b> invitations</span><button class="seeAll">Voir tout ›</button></div>
         <div class="inviteList">
-          <div class="inviteCard"><img src="assets/loop_0.png"><div class="inviteInfo"><strong>Soirée d'été ☀️</strong><small>Marie t’invite à rejoindre ce loop</small><div class="miniFaces"><img src="assets/avatar_0.png"><img src="assets/avatar_1.png"><img src="assets/avatar_3.png"></div></div><div class="inviteActions"><button class="refuseBtn">Refuser</button><button class="joinBtn">Rejoindre</button></div></div>
-          <div class="inviteCard"><img src="assets/loop_1.png"><div class="inviteInfo"><strong>Vacances 2026 🌴</strong><small>Léo t’invite à rejoindre ce loop</small><div class="miniFaces"><img src="assets/avatar_5.png"><img src="assets/avatar_4.png"><img src="assets/avatar_2.png"></div></div><div class="inviteActions"><button class="refuseBtn">Refuser</button><button class="joinBtn">Rejoindre</button></div></div>
-          <div class="inviteCard"><img src="assets/loop_2.png"><div class="inviteInfo"><strong>Lycée Crew 🎧</strong><small>Inès t’invite à rejoindre ce loop</small><div class="miniFaces"><img src="assets/avatar_3.png"><img src="assets/avatar_0.png"><img src="assets/avatar_1.png"></div></div><div class="inviteActions"><button class="refuseBtn">Refuser</button><button class="joinBtn">Rejoindre</button></div></div>
+          <div class="inviteCard"><img src="assets/loop_0.png"><div class="inviteInfo"><strong>Soirée d'été ☀️</strong><small>Marie t’invite à rejoindre ce loop</small><div class="miniFaces"><img src="assets/photo_0.jpg"><img src="assets/photo_1.jpg"><img src="assets/photo_3.jpg"></div></div><div class="inviteActions"><button class="refuseBtn">Refuser</button><button class="joinBtn">Rejoindre</button></div></div>
+          <div class="inviteCard"><img src="assets/loop_1.png"><div class="inviteInfo"><strong>Vacances 2026 🌴</strong><small>Léo t’invite à rejoindre ce loop</small><div class="miniFaces"><img src="assets/photo_5.jpg"><img src="assets/photo_4.jpg"><img src="assets/photo_2.jpg"></div></div><div class="inviteActions"><button class="refuseBtn">Refuser</button><button class="joinBtn">Rejoindre</button></div></div>
+          <div class="inviteCard"><img src="assets/loop_2.png"><div class="inviteInfo"><strong>Lycée Crew 🎧</strong><small>Inès t’invite à rejoindre ce loop</small><div class="miniFaces"><img src="assets/photo_3.jpg"><img src="assets/photo_0.jpg"><img src="assets/photo_1.jpg"></div></div><div class="inviteActions"><button class="refuseBtn">Refuser</button><button class="joinBtn">Rejoindre</button></div></div>
         </div>
         <div class="sectionTitle"><span>Loops du <b>moment</b></span><button class="seeAll">Voir tout ›</button></div>
         <div class="momentStrip">
@@ -193,7 +233,7 @@ body{display:grid;place-items:center}
   <div class="modalShade" id="validationModal">
     <div class="targetSheet">
       <div id="claimStep">
-        <div class="remotePhone"><img class="remoteAvatar" id="remoteAvatar" src="assets/avatar_0.png"><div><h3 id="remoteTitle">Chloé, à toi de confirmer</h3><p>Simulation de la notification reçue sur le téléphone de ta cible.</p></div></div>
+        <div class="remotePhone"><img class="remoteAvatar" id="remoteAvatar" src="assets/photo_0.jpg"><div><h3 id="remoteTitle">Chloé, à toi de confirmer</h3><p>Simulation de la notification reçue sur le téléphone de ta cible.</p></div></div>
         <div class="claimCard"><small>MISSION REVENDIQUÉE</small><strong id="claimMission">Faire dire « Ohlala »</strong></div>
         <div class="sheetActions"><button class="contest" id="contestButton">Contester</button><button class="confirm" id="confirmButton">Confirmer ma défaite</button></div>
       </div>
@@ -203,60 +243,178 @@ body{display:grid;place-items:center}
 </div>
 <script>
 const screenIds=['moi','missions','world'];
-let current=1, moving=false;
+let current=1, moving=false, navRAF=0;
 const track=document.getElementById('track'), viewport=document.getElementById('viewport'), navRail=document.getElementById('navRail');
 function navIcon(id){return id==='moi'?'●':id==='missions'?'◎':'∞'}
 function navLabel(id){return id==='moi'?'Moi':id==='missions'?'Missions':'LOOP'}
 const navItems={};
 function slotFor(id,cur=current){const i=screenIds.indexOf(id);let d=(i-cur+3)%3;if(d===2)d=-1;return d}
-function navTransform(slot){return `translateX(${slot*126}px) scale(${slot===0?1.07:.90})`}
-function setupNav(){navRail.innerHTML='';screenIds.forEach(id=>{const b=document.createElement('button');b.className='navItem';b.dataset.id=id;b.innerHTML=`<div class="navIcon">${navIcon(id)}</div><div class="navLabel">${navLabel(id)}</div>`;b.onclick=()=>{const slot=slotFor(id);if(slot)move(slot)};navRail.appendChild(b);navItems[id]=b});syncNav(false)}
-function syncNav(animate=true,dir=0,newCurrent=current){screenIds.forEach(id=>{const b=navItems[id],oldSlot=Number(b.dataset.slot??slotFor(id,current)),newSlot=slotFor(id,newCurrent);b.dataset.slot=newSlot;b.classList.toggle('center',newSlot===0);const oldT=navTransform(oldSlot),newT=navTransform(newSlot);const oldO=oldSlot===0?1:.88,newO=newSlot===0?1:.88;if(!animate){b.style.transform=newT;b.style.opacity=newO;return}b.getAnimations().forEach(a=>a.cancel());if(dir>0 && oldSlot===-1 && newSlot===1){b.animate([{transform:oldT,opacity:oldO},{transform:'translateX(-238px) scale(.82)',opacity:.12,offset:.44},{transform:'translateX(238px) scale(.82)',opacity:.12,offset:.46},{transform:newT,opacity:newO}],{duration:440,easing:'cubic-bezier(.22,.76,.28,1)',fill:'forwards'}).onfinish=()=>{b.style.transform=newT;b.style.opacity=newO}}else if(dir<0 && oldSlot===1 && newSlot===-1){b.animate([{transform:oldT,opacity:oldO},{transform:'translateX(238px) scale(.82)',opacity:.12,offset:.44},{transform:'translateX(-238px) scale(.82)',opacity:.12,offset:.46},{transform:newT,opacity:newO}],{duration:440,easing:'cubic-bezier(.22,.76,.28,1)',fill:'forwards'}).onfinish=()=>{b.style.transform=newT;b.style.opacity=newO}}else{b.animate([{transform:oldT,opacity:oldO},{transform:newT,opacity:newO}],{duration:440,easing:'cubic-bezier(.22,.76,.28,1)',fill:'forwards'}).onfinish=()=>{b.style.transform=newT;b.style.opacity=newO}}})}
-function move(dir){if(moving)return;moving=true;const newCurrent=(current+dir+3)%3;syncNav(true,dir,newCurrent);track.style.transition='transform .44s cubic-bezier(.22,.76,.28,1)';track.style.transform=`translateX(${dir>0?-66.666666:0}%)`;setTimeout(()=>{current=newCurrent;const order=[screenIds[(current+2)%3],screenIds[current],screenIds[(current+1)%3]];order.forEach(id=>track.appendChild(track.querySelector(`[data-screen="${id}"]`)));track.style.transition='none';track.style.transform='translateX(-33.333333%)';syncNav(false);moving=false},455)}
+function navPose(slot){
+  const angle=(slot*120-90)*Math.PI/180;
+  const x=130*Math.cos(angle);
+  const y=1+22*(Math.sin(angle)+1);
+  const focus=(1-Math.sin(angle))/2;
+  const scale=.70+.34*focus;
+  const opacity=.16+.84*Math.max(.08,focus);
+  return {x,y,scale,opacity,focus};
+}
+function applyNavPose(button,slot){
+  const p=navPose(slot),icon=button.querySelector('.navIcon'),label=button.querySelector('.navLabel');
+  button.style.transform=`translate3d(${p.x}px,${p.y}px,0) scale(${p.scale})`;
+  button.style.opacity=p.opacity;
+  button.style.zIndex=String(10+Math.round(p.focus*30));
+  const glow=Math.max(0,(p.focus-.55)/.45);
+  button.style.color=glow>.45?'#ffe100':'#d5e2ee';
+  icon.style.filter=`drop-shadow(0 0 ${Math.round(15*glow)}px rgba(255,225,0,${(.75*glow).toFixed(2)}))`;
+  label.style.fontSize=`${(10+4*glow).toFixed(1)}px`;
+  const underline=button.querySelector('.navUnderline');
+  underline.style.opacity=glow;
+  underline.style.transform=`translateX(-50%) scaleX(${(.35+.65*glow).toFixed(2)})`;
+}
+function setupNav(){
+  navRail.innerHTML='';
+  screenIds.forEach(id=>{
+    const b=document.createElement('button');
+    b.className='navItem';b.dataset.id=id;
+    b.innerHTML=`<div class="navIcon">${navIcon(id)}</div><div class="navLabel">${navLabel(id)}</div><i class="navUnderline"></i>`;
+    b.onclick=()=>{const slot=slotFor(id);if(slot&&!moving)move(slot)};
+    navRail.appendChild(b);navItems[id]=b;
+  });
+  syncNavStatic();
+}
+function syncNavStatic(){screenIds.forEach(id=>applyNavPose(navItems[id],slotFor(id,current)))}
+function animateNav(dir,duration=560){
+  cancelAnimationFrame(navRAF);
+  const starts={};screenIds.forEach(id=>starts[id]=slotFor(id,current));
+  const t0=performance.now();const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+  function frame(now){
+    const raw=Math.min(1,(now-t0)/duration),e=ease(raw);
+    screenIds.forEach(id=>applyNavPose(navItems[id],starts[id]-dir*e));
+    if(raw<1)navRAF=requestAnimationFrame(frame);
+  }
+  navRAF=requestAnimationFrame(frame);
+}
+function move(dir){
+  if(moving)return;moving=true;
+  const newCurrent=(current+dir+3)%3;animateNav(dir,560);
+  track.style.transition='transform .56s cubic-bezier(.22,.76,.28,1)';
+  track.style.transform=`translateX(${dir>0?-66.666666:0}%)`;
+  setTimeout(()=>{
+    current=newCurrent;
+    const order=[screenIds[(current+2)%3],screenIds[current],screenIds[(current+1)%3]];
+    order.forEach(id=>track.appendChild(track.querySelector(`[data-screen="${id}"]`)));
+    track.style.transition='none';track.style.transform='translateX(-33.333333%)';syncNavStatic();moving=false;
+  },570);
+}
 setupNav();
-let swx=0,swy=0,sw=false;viewport.addEventListener('pointerdown',e=>{if(e.target.closest('.stage,.scrollStrip,.loopStrip,.momentStrip'))return;sw=true;swx=e.clientX;swy=e.clientY});viewport.addEventListener('pointerup',e=>{if(!sw)return;sw=false;const dx=e.clientX-swx,dy=e.clientY-swy;if(Math.abs(dx)>72&&Math.abs(dx)>Math.abs(dy)*1.5)move(dx<0?1:-1)});
+let swx=0,swy=0,sw=false;
+viewport.addEventListener('pointerdown',e=>{if(e.target.closest('.stage,.scrollStrip,.loopStrip,.momentStrip'))return;sw=true;swx=e.clientX;swy=e.clientY});
+viewport.addEventListener('pointerup',e=>{if(!sw)return;sw=false;const dx=e.clientX-swx,dy=e.clientY-swy;if(Math.abs(dx)>72&&Math.abs(dx)>Math.abs(dy)*1.5)move(dx<0?1:-1)});
 
+const demoNames=['Chloé','Tom','Lina','Noa','Jade','Léo','Emma','Milo','Sacha','Mia','Inès','Nina','Lucas','Zoé','Hugo','Marie','Nolan','Clara','Eliott','Lou','Camille','Arthur','Sarah','Maël','Lola','Louis','Aya','Nathan','Yanis','Rose','Max','Ambre','Théo','Léa','Jules','Ana'];
+const photoPool=['assets/photo_0.jpg','assets/photo_1.jpg','assets/photo_4.jpg','assets/photo_3.jpg','assets/photo_5.jpg','assets/photo_2.jpg'];
+const missionPool=['Fais-lui dire « Ohlala »','Fais-lui demander un stylo','Fais-lui dire « carrément »','Fais-lui demander l’heure','Fais-lui toucher quelque chose de jaune','Fais-lui fredonner une chanson','Fais-lui dire « incroyable »','Fais-lui te prêter un objet'];
+function buildLoop({id,name,thumb,size,ownKills,otherOut,targetIndex,mission,reward}){
+  const people=Array.from({length:size},(_,i)=>({id:`${id}-${i}`,order:i,name:demoNames[i%demoNames.length],img:photoPool[i%photoPool.length],status:'alive'}));
+  people[0]={...people[0],name:'Alex R.',img:'assets/photo_2.jpg',status:'self'};
+  ownKills.forEach((idx,j)=>{if(idx<size)people[idx]={...people[idx],status:'mine',mission:missionPool[(j+6)%missionPool.length]}});
+  otherOut.forEach((idx,j)=>{if(idx<size&&idx!==0&&!ownKills.includes(idx))people[idx]={...people[idx],status:'other',mission:'Éliminé par un autre joueur'}});
+  people[targetIndex]={...people[targetIndex],status:'target',mission};
+  return {id,name,thumb,size,people,mission,reward};
+}
 const loops=[
- {id:'vac',name:'Vacances 2026',thumb:'assets/loop_0.png',progress:'3 / 8 missions',ratio:37,target:'Chloé',targetImg:'assets/avatar_0.png',mission:'Fais-lui dire « Ohlala »',reward:'+100 pts',people:[
-  {name:'Lina',img:'assets/avatar_4.png',state:'defeated',mission:'Faire dire « incroyable »'},
-  {name:'Tom',img:'assets/avatar_1.png',state:'defeated',mission:'Faire demander l’heure'},
-  {name:'Chloé',img:'assets/avatar_0.png',state:'current',mission:'Fais-lui dire « Ohlala »'},
-  {state:'hidden'},{state:'hidden'},{state:'hidden'},{state:'hidden'},{state:'hidden'}]},
- {id:'crew',name:'Lycée Crew',thumb:'assets/loop_2.png',progress:'5 / 10 missions',ratio:50,target:'Noa',targetImg:'assets/avatar_3.png',mission:'Fais-lui demander un stylo',reward:'+120 pts',people:[
-  {name:'Emma',img:'assets/avatar_4.png',state:'defeated',mission:'Faire dire « menu »'},
-  {name:'Sacha',img:'assets/avatar_1.png',state:'defeated',mission:'Faire siffler'},
-  {name:'Milo',img:'assets/avatar_5.png',state:'defeated',mission:'Faire applaudir'},
-  {name:'Noa',img:'assets/avatar_3.png',state:'current',mission:'Fais-lui demander un stylo'},
-  {state:'hidden'},{state:'hidden'},{state:'hidden'},{state:'hidden'},{state:'hidden'},{state:'hidden'}]},
- {id:'city',name:'Défi d’été',thumb:'assets/loop_3.png',progress:'2 / 6 missions',ratio:33,target:'Léo',targetImg:'assets/avatar_5.png',mission:'Fais-lui applaudir trois fois',reward:'+90 pts',people:[
-  {name:'Mia',img:'assets/avatar_4.png',state:'defeated',mission:'Faire dire « soleil »'},
-  {name:'Léo',img:'assets/avatar_5.png',state:'current',mission:'Fais-lui applaudir trois fois'},
-  {state:'hidden'},{state:'hidden'},{state:'hidden'},{state:'hidden'}]}
+ buildLoop({id:'vac',name:'Vacances 2026',thumb:'assets/loop_0.png',size:28,ownKills:[1,2],otherOut:[3,7,11,16,23,25],targetIndex:4,mission:'Fais-lui dire « Ohlala »',reward:'+100 pts'}),
+ buildLoop({id:'crew',name:'Lycée Crew',thumb:'assets/loop_2.png',size:18,ownKills:[1,3,4],otherOut:[2,8,12,15],targetIndex:5,mission:'Fais-lui demander un stylo',reward:'+120 pts'}),
+ buildLoop({id:'city',name:'Défi d’été',thumb:'assets/loop_3.png',size:36,ownKills:[1],otherOut:[4,6,10,14,19,24,29,33],targetIndex:2,mission:'Fais-lui applaudir trois fois',reward:'+90 pts'})
 ];
-let selectedLoop=0,rotation=0,dragging=false,lastX=0;
-const carousel=document.getElementById('carousel'), stage=document.getElementById('stage'), strip=document.getElementById('loopStrip'), loopCount=document.getElementById('loopCount'), successButton=document.getElementById('successButton'), successArea=document.getElementById('successArea'), recenterButton=document.getElementById('recenterButton');
-function missionMarkup(text){const q=text.match(/«([^»]+)»/);if(!q)return text;return text.replace(q[0],`<em>« ${q[1]} »</em>`)}
-function currentIndex(l=loops[selectedLoop]){return l.people.findIndex(p=>p.state==='current')}
-function baseMissionRotation(l=loops[selectedLoop]){const n=l.people.length,idx=currentIndex(l);return idx<0?0:-(idx/n)*Math.PI*2}
-function nearestMissionRotation(){const base=baseMissionRotation(),tau=Math.PI*2,k=Math.round((rotation-base)/tau);return base+k*tau}
-function missionOffset(){let d=rotation-nearestMissionRotation();return Math.abs(d)}
-function updateRecenter(){recenterButton.classList.toggle('show',missionOffset()>.24)}
-function renderLoopStrip(){strip.innerHTML='';loops.forEach((l,i)=>{const b=document.createElement('button');b.className='loopChip '+(i===selectedLoop?'selected':'');b.innerHTML=`<img src="${l.thumb}"><div><strong>${l.name}</strong><small>${l.progress}</small></div><span class="miniProgress"><i style="width:${l.ratio}%"></i></span>`;b.onclick=()=>{selectedLoop=i;rotation=baseMissionRotation(loops[i]);successArea.classList.remove('waiting');successButton.disabled=false;successButton.innerHTML='<span class="checkDisc">✓</span><span>Mission réussie</span>';renderLoopStrip();renderCarousel()};strip.appendChild(b)})}
-function renderCarousel(){const l=loops[selectedLoop],n=l.people.length;const defeated=l.people.filter(p=>p.state==='defeated').length;loopCount.innerHTML=`${defeated+1} / ${n}<small>dans cette loop</small>`;carousel.innerHTML='';const rx=Math.min(stage.clientWidth*.38,168),ry=Math.min(stage.clientHeight*.255,124);l.people.forEach((p,i)=>{const angle=(i/n)*Math.PI*2+rotation,z=Math.cos(angle),x=Math.sin(angle)*rx,y=Math.cos(angle)*ry*.24,scale=.63+(z+1)*.20,opacity=.22+(z+1)*.38,rot=-Math.sin(angle)*12+(p.state==='current'?-1.5:(i%2?2:-2));const c=document.createElement('div');c.className='personCard '+p.state;c.style.transform=`translate3d(${x}px,${y}px,${z*175}px) scale(${scale}) rotateY(${-Math.sin(angle)*9}deg) rotateZ(${rot}deg)`;c.style.opacity=opacity;c.style.zIndex=Math.round((z+1)*60);if(p.state!=='hidden'){c.innerHTML=`${p.state==='defeated'?'<span class="defeatStamp">✓</span>':''}<div class="cardPortrait"><img src="${p.img}" alt="Photo de ${p.name}"><span class="namePill">${p.name}</span>${p.state==='current'?'<span class="orderPill">CIBLE</span>':''}</div><div class="missionBody"><small>${p.state==='current'?'TA MISSION':'DÉJÀ FAIT'}</small><strong>${missionMarkup(p.mission)}</strong><b>${p.state==='current'?l.reward:'+100 pts'}</b></div>`}carousel.appendChild(c)});updateRecenter()}
-function recenterMission(){rotation=nearestMissionRotation();carousel.classList.add('recentering');renderCarousel();recenterButton.classList.remove('show');setTimeout(()=>carousel.classList.remove('recentering'),520)}
-recenterButton.onclick=e=>{e.stopPropagation();recenterMission()};
-stage.addEventListener('pointerdown',e=>{if(e.target.closest('.recenterButton'))return;dragging=true;lastX=e.clientX;stage.setPointerCapture(e.pointerId)});stage.addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-lastX;rotation+=dx*.0082;lastX=e.clientX;renderCarousel()});stage.addEventListener('pointerup',()=>{dragging=false;updateRecenter()});stage.addEventListener('pointercancel',()=>{dragging=false;updateRecenter()});window.addEventListener('resize',renderCarousel);
-rotation=baseMissionRotation();renderLoopStrip();setTimeout(renderCarousel,80);
+let selectedLoop=0,viewMode='active',rotation=0,dragging=false,lastX=0,dragTravel=0,suppressCardClick=false;
+const carousel=document.getElementById('carousel'),stage=document.getElementById('stage'),strip=document.getElementById('loopStrip'),loopCount=document.getElementById('loopCount'),successButton=document.getElementById('successButton'),successArea=document.getElementById('successArea'),targetBeacon=document.getElementById('targetBeacon'),activeCount=document.getElementById('activeCount'),historyCount=document.getElementById('historyCount'),viewToggle=document.getElementById('viewToggle');
+function missionMarkup(text=''){const q=text.match(/«([^»]+)»/);if(!q)return text;return text.replace(q[0],`<em>« ${q[1]} »</em>`)}
+function isEliminated(p){return p.status==='mine'||p.status==='other'}
+function activePeople(l=loops[selectedLoop]){return l.people.filter(p=>!isEliminated(p))}
+function targetPerson(l=loops[selectedLoop]){return l.people.find(p=>p.status==='target')}
+function targetOriginalIndex(l=loops[selectedLoop]){return l.people.findIndex(p=>p.status==='target')}
+function visiblePeople(l=loops[selectedLoop]){return viewMode==='history'?l.people:activePeople(l)}
+function visibleIndexForOriginal(originalIndex,l=loops[selectedLoop]){const vis=visiblePeople(l),id=l.people[originalIndex]?.id;return vis.findIndex(p=>p.id===id)}
+function rotationForVisibleIndex(index,n){const base=-(index/n)*Math.PI*2,tau=Math.PI*2;return base+Math.round((rotation-base)/tau)*tau}
+function targetRotation(l=loops[selectedLoop]){const oi=targetOriginalIndex(l),vi=visibleIndexForOriginal(oi,l),vis=visiblePeople(l);return vi<0?rotation:rotationForVisibleIndex(vi,vis.length)}
+function resetToTarget(){rotation=targetRotation();renderCarousel()}
+function normalizedDistance(a,b){const tau=Math.PI*2;let d=(a-b)%tau;if(d>Math.PI)d-=tau;if(d<-Math.PI)d+=tau;return Math.abs(d)}
+function updateTargetBeacon(){targetBeacon.classList.toggle('show',normalizedDistance(rotation,targetRotation())>.16)}
+function loopStats(l){const alive=activePeople(l).length,total=l.people.length,out=total-alive;return {alive,total,out,ratio:Math.round(alive/total*100)}}
+function renderLoopStrip(){
+  strip.innerHTML='';
+  loops.forEach((l,i)=>{const st=loopStats(l),b=document.createElement('button');b.className='loopChip '+(i===selectedLoop?'selected':'');b.innerHTML=`<img src="${l.thumb}"><div><strong>${l.name}</strong><small>${st.alive} en jeu · ${st.total} au départ</small></div><span class="miniProgress"><i style="width:${st.ratio}%"></i></span>`;b.onclick=()=>{selectedLoop=i;successArea.classList.remove('waiting');successButton.disabled=false;successButton.innerHTML='<span class="checkDisc">✓</span><span>Mission réussie</span>';renderLoopStrip();rotation=0;rotation=targetRotation();renderCarousel()};strip.appendChild(b)})
+}
+function cardFace(p,l){
+  if(p.status==='alive')return `<div class="cardBack"></div>`;
+  if(p.status==='target')return `<div class="cardPortrait"><img src="${p.img}" alt="Photo de ${p.name}"><span class="namePill">${p.name}</span><span class="statusPill">CIBLE</span></div><div class="missionBody"><small>TA MISSION</small><strong>${missionMarkup(p.mission)}</strong><b>${l.reward}</b></div>`;
+  if(p.status==='self')return `<span class="historyStamp">MOI</span><div class="cardPortrait"><img src="${p.img}" alt="Photo de ${p.name}"><span class="namePill">${p.name}</span><span class="statusPill">MOI</span></div><div class="missionBody"><small>TON POINT D’ANCRAGE</small><strong>Ta place dans cette LOOP</strong><b>position secrète pour les autres</b></div>`;
+  if(p.status==='mine')return `<span class="historyStamp">✓</span><div class="cardPortrait"><img src="${p.img}" alt="Photo de ${p.name}"><span class="namePill">${p.name}</span><span class="statusPill">À MOI</span></div><div class="missionBody"><small>MISSION GAGNÉE</small><strong>${p.mission||'Mission réussie'}</strong><b>+100 pts</b></div>`;
+  return `<span class="historyStamp">✓</span><div class="cardPortrait"><img src="${p.img}" alt="Photo de ${p.name}"><span class="namePill">${p.name}</span><span class="statusPill">SORTI</span></div><div class="missionBody"><small>ÉLIMINÉ</small><strong>Sorti par un autre joueur</strong><b>historique de la LOOP</b></div>`;
+}
+function focusVisibleIndex(index){if(suppressCardClick)return;const vis=visiblePeople(),n=vis.length;if(!n)return;rotation=rotationForVisibleIndex(index,n);renderCarousel()}
+function renderCarousel(){
+  const l=loops[selectedLoop],vis=visiblePeople(l),n=vis.length,st=loopStats(l);
+  activeCount.textContent=st.alive;historyCount.textContent=st.total;
+  loopCount.innerHTML=viewMode==='active'?`${st.alive} en jeu<small>sur ${st.total} participants</small>`:`${st.total} cartes<small>${st.alive} encore en jeu</small>`;
+  carousel.innerHTML='';
+  const rx=Math.min(stage.clientWidth*.44,205),frontY=stage.clientHeight*.535,ry=Math.min(stage.clientHeight*.12,54);
+  vis.forEach((p,i)=>{
+    const angle=(i/n)*Math.PI*2+rotation,z=Math.cos(angle),x=Math.sin(angle)*rx,y=z*ry;
+    const depth=(z+1)/2,scale=.36+depth*.66,opacity=.20+depth*.80,side=Math.sin(angle);
+    const c=document.createElement('div');
+    const rear=z<-.10;
+    c.className=`personCard ${p.status} ${rear?'farside':'frontside'} ${p.status==='alive'?'back':''}`;
+    const rotateY=-side*48,tilt=-side*9+(p.status==='target'&&!rear?-1.5:0);
+    c.style.transform=`translate3d(${x}px,${y}px,${z*205}px) scale(${scale}) rotateY(${rotateY}deg) rotateZ(${tilt}deg)`;
+    c.style.opacity=opacity;c.style.zIndex=String(Math.round((z+1)*80));
+    if(rear){c.innerHTML=`<div class="cardBack"><i class="edgeMark"></i></div>`}else{c.innerHTML=cardFace(p,l)}
+    c.addEventListener('click',()=>focusVisibleIndex(i));carousel.appendChild(c)
+  });
+  document.getElementById('orbit').style.width=viewMode==='active'?`min(88%,${Math.max(310,Math.min(405,st.alive*15))}px)`:'min(92%,410px)';
+  updateTargetBeacon();
+}
+viewToggle.querySelectorAll('button').forEach(btn=>btn.onclick=()=>{
+  if(btn.dataset.mode===viewMode)return;
+  const previousTarget=targetPerson()?.id;viewMode=btn.dataset.mode;
+  viewToggle.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.mode===viewMode));
+  rotation=0;const l=loops[selectedLoop],oi=l.people.findIndex(p=>p.id===previousTarget),vi=visibleIndexForOriginal(oi,l),vis=visiblePeople(l);rotation=vi<0?0:-(vi/vis.length)*Math.PI*2;
+  carousel.style.filter='brightness(1.25)';setTimeout(()=>carousel.style.filter='',300);renderCarousel();
+});
+targetBeacon.onclick=e=>{e.stopPropagation();resetToTarget()};
+stage.addEventListener('pointerdown',e=>{if(e.target.closest('.targetBeacon,.viewToggle'))return;dragging=true;dragTravel=0;lastX=e.clientX;carousel.classList.add('dragging');stage.setPointerCapture(e.pointerId)});
+stage.addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-lastX;dragTravel+=Math.abs(dx);rotation+=dx*.0075;lastX=e.clientX;renderCarousel()});
+function endStageDrag(){if(!dragging)return;dragging=false;carousel.classList.remove('dragging');suppressCardClick=dragTravel>8;setTimeout(()=>{suppressCardClick=false},30);updateTargetBeacon()}
+stage.addEventListener('pointerup',endStageDrag);stage.addEventListener('pointercancel',endStageDrag);window.addEventListener('resize',renderCarousel);
+renderLoopStrip();setTimeout(()=>{rotation=targetRotation();renderCarousel()},90);
+
 
 const toast=document.getElementById('toast');function showToast(title,text,icon='✓'){document.getElementById('toastIcon').textContent=icon;toast.querySelector('strong').textContent=title;toast.querySelector('span').textContent=text;toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>toast.classList.remove('show'),3200)}
 const modal=document.getElementById('validationModal'),claimStep=document.getElementById('claimStep'),fairStep=document.getElementById('fairStep');
-successButton.onclick=()=>{const l=loops[selectedLoop];successArea.classList.add('waiting');successButton.disabled=true;successButton.innerHTML='<span class="checkDisc">…</span><span>Demande envoyée</span>';showToast('Demande envoyée',`${l.target} reçoit une notification pour confirmer ta mission.`,'↗');setTimeout(()=>{document.getElementById('remoteAvatar').src=l.targetImg;document.getElementById('remoteTitle').textContent=`${l.target}, à toi de confirmer`;document.getElementById('claimMission').textContent=l.mission;claimStep.classList.remove('hide');fairStep.classList.remove('show');modal.classList.add('show')},650)};
+successButton.onclick=()=>{const l=loops[selectedLoop],t=targetPerson(l);if(!t)return;successArea.classList.add('waiting');successButton.disabled=true;successButton.innerHTML='<span class="checkDisc">…</span><span>Demande envoyée</span>';showToast('Demande envoyée',`${t.name} reçoit une notification pour confirmer ta mission.`,'↗');setTimeout(()=>{document.getElementById('remoteAvatar').src=t.img;document.getElementById('remoteTitle').textContent=`${t.name}, à toi de confirmer`;document.getElementById('claimMission').textContent=t.mission||l.mission;claimStep.classList.remove('hide');fairStep.classList.remove('show');modal.classList.add('show')},650)};
 document.getElementById('contestButton').onclick=()=>{modal.classList.remove('show');successArea.classList.remove('waiting');successButton.disabled=false;successButton.innerHTML='<span class="checkDisc">✓</span><span>Mission réussie</span>';showToast('Mission contestée','Ta cible a refusé la validation. La LOOP ne change pas.','!')};
 document.getElementById('confirmButton').onclick=()=>{claimStep.classList.add('hide');fairStep.classList.add('show')};
 document.getElementById('fairButton').onclick=()=>{modal.classList.remove('show');completeMission()};
 function sparks(){for(let i=0;i<22;i++){const s=document.createElement('i');s.className='spark';s.style.left=(40+Math.random()*20)+'%';s.style.top=(39+Math.random()*18)+'%';s.style.setProperty('--dx',(Math.random()*260-130)+'px');s.style.setProperty('--dy',(Math.random()*230-120)+'px');s.style.background=i%3===0?'#8e42ff':i%3===1?'#00b8ff':'#ffe100';stage.appendChild(s);setTimeout(()=>s.remove(),950)}}
-function completeMission(){const l=loops[selectedLoop],idx=l.people.findIndex(p=>p.state==='current');if(idx<0)return;const old=l.people[idx];old.state='defeated';let next=l.people.slice(idx+1).find(p=>p.state==='hidden')||l.people.find(p=>p.state==='hidden');if(next){const pool=[['Jade','assets/avatar_4.png'],['Léo','assets/avatar_5.png'],['Noa','assets/avatar_3.png'],['Tom','assets/avatar_1.png']];const choice=pool[Math.floor(Math.random()*pool.length)];next.state='current';next.name=choice[0];next.img=choice[1];const missions=['Fais-lui dire « carrément »','Fais-lui demander l’heure','Fais-lui toucher quelque chose de jaune','Fais-lui fredonner une chanson'];next.mission=missions[Math.floor(Math.random()*missions.length)];l.target=next.name;l.targetImg=next.img;l.mission=next.mission;l.progress=`${l.people.filter(p=>p.state==='defeated').length+1} / ${l.people.length} missions`;l.ratio=Math.min(100,Math.round((l.people.filter(p=>p.state==='defeated').length+1)/l.people.length*100))}
-showToast('Mission validée ✓',`${old.name} confirme sa défaite. La LOOP se resserre…`,'✓');sparks();carousel.style.transition='transform .48s cubic-bezier(.2,.82,.2,1),filter .48s';carousel.style.transform='scale(.72) rotateZ(-9deg)';carousel.style.filter='brightness(1.35)';setTimeout(()=>{rotation=nearestMissionRotation();carousel.style.transform='scale(1) rotateZ(0)';carousel.style.filter='';renderCarousel();renderLoopStrip();setTimeout(()=>{carousel.style.transition='';successArea.classList.remove('waiting');successButton.disabled=false;successButton.innerHTML='<span class="checkDisc">✓</span><span>Mission réussie</span>';showToast('Nouvelle cible',`${l.target} est maintenant ta cible. Nouvelle mission révélée.`,'◎')},720)},520)}
+function completeMission(){
+ const l=loops[selectedLoop],idx=targetOriginalIndex(l);if(idx<0)return;
+ const old=l.people[idx];old.status='mine';old.mission=l.mission;
+ let nextIndex=-1;
+ for(let step=1;step<l.people.length;step++){
+   const j=(idx+step)%l.people.length,p=l.people[j];
+   if(!isEliminated(p)&&p.status!=='self'){nextIndex=j;break}
+ }
+ if(nextIndex>=0){
+   const next=l.people[nextIndex];next.status='target';next.mission=missionPool[(idx+selectedLoop+3)%missionPool.length];l.mission=next.mission;
+ }
+ showToast('Mission validée ✓',`${old.name} confirme sa défaite. La chaîne active se referme…`,'✓');sparks();
+ carousel.style.transition='transform .52s cubic-bezier(.2,.82,.2,1),filter .52s';carousel.style.transform='scale(.76) rotateZ(-7deg)';carousel.style.filter='brightness(1.35)';
+ setTimeout(()=>{
+   rotation=0;rotation=targetRotation();carousel.style.transform='scale(1) rotateZ(0)';carousel.style.filter='';renderCarousel();renderLoopStrip();
+   setTimeout(()=>{carousel.style.transition='';successArea.classList.remove('waiting');successButton.disabled=false;successButton.innerHTML='<span class="checkDisc">✓</span><span>Mission réussie</span>';const t=targetPerson(l);showToast('Nouvelle cible',`${t?.name||'Nouvelle cible'} est maintenant ta cible. Sa mission est révélée.`,'◎')},700)
+ },540)
+}
 
 Array.from(document.querySelectorAll('.joinBtn')).forEach(btn=>btn.onclick=()=>{btn.textContent='Rejoint ✓';btn.disabled=true;showToast('Invitation acceptée','Cette LOOP apparaîtra dans tes missions au lancement.','∞')});
 Array.from(document.querySelectorAll('.refuseBtn')).forEach(btn=>btn.onclick=()=>{btn.closest('.inviteCard').style.opacity='.35';btn.textContent='Refusé';btn.disabled=true});
