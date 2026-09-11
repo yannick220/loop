@@ -1,12 +1,14 @@
 {
   "name":"LOOP",
   "short_name":"LOOP",
+  "description":"Des gens. Des défis. Des histoires.",
   "start_url":"./index.html",
   "display":"standalone",
-  "background_color":"#031727",
-  "theme_color":"#031727",
+  "orientation":"any",
+  "background_color":"#031426",
+  "theme_color":"#031426",
   "icons":[
-    {"src":"icon-192.png","sizes":"192x192","type":"image/png"},
-    {"src":"icon-512.png","sizes":"512x512","type":"image/png"}
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
   ]
 }
