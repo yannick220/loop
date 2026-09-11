@@ -1,4 +1,4 @@
-const CACHE='loop-v5-hierarchy-history-20260911';
+const CACHE='loop-v6';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png',
 './assets/photo_0.jpg','./assets/photo_1.jpg','./assets/photo_2.jpg','./assets/photo_3.jpg','./assets/photo_4.jpg','./assets/photo_5.jpg',
 './assets/loop_0.png','./assets/loop_1.png','./assets/loop_2.png','./assets/loop_3.png'];

@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
-<title>LOOP</title>
+<title>LOOP V6</title>
 <style>
 :root{
   --night:#031426;--night2:#061d34;--panel:#092943;--panel2:#0e3657;
@@ -126,6 +126,86 @@ body{display:grid;place-items:center}
 .spark{position:absolute;width:7px;height:7px;border-radius:2px;pointer-events:none;z-index:50;background:var(--yellow);animation:spark .9s ease-out forwards}@keyframes spark{to{transform:translate(var(--dx),var(--dy)) rotate(240deg) scale(.2);opacity:0}}
 /* landscape: let the loop breathe */
 @media (orientation:landscape) and (max-height:600px){.appShell{width:100vw;max-width:none}.viewport{bottom:72px}.navDock{height:72px}.navItem{top:2px;height:60px}.screen{padding-top:8px}.missionScreen .header{position:absolute;left:18px;top:10px;z-index:30}.missionScreen .missionSub{position:absolute;left:19px;top:61px;z-index:30}.stage{min-height:100%;max-height:none;margin:0}.successArea{position:absolute;right:18px;bottom:20px;width:300px}.loopSelectorTitle{position:absolute;left:18px;bottom:89px;z-index:25}.loopStrip{position:absolute;left:16px;bottom:15px;width:50%;z-index:25}.stage .orbit{width:500px;height:250px}.personCard{width:160px;height:226px;margin-left:-80px;margin-top:-113px}}
+
+/* ===== V6 : carousel annulaire complet + navigation vue du dessus ===== */
+.missionScreen{overflow:hidden}
+.stage{
+  flex:0 0 auto;
+  height:clamp(405px,51dvh,465px);
+  min-height:405px;
+  max-height:465px;
+  margin:0 -12px 12px;
+  overflow:hidden;
+  perspective:1100px;
+}
+.stage:before{top:49%;height:290px;opacity:.92}
+.stage:after{top:50%;height:190px;opacity:.8}
+.orbit{
+  top:50%;
+  width:min(96%,432px)!important;
+  height:244px;
+  transform:translate(-50%,-50%) rotateX(69deg);
+  border-color:rgba(0,181,255,.62);
+  box-shadow:0 0 15px rgba(0,181,255,.65),0 0 48px rgba(0,103,255,.34),inset 0 0 44px rgba(0,135,255,.13);
+}
+.orbit:before{inset:20px;border-color:rgba(255,225,0,.22)}
+.orbit:after{inset:-15px;border-color:rgba(143,68,255,.20)}
+.carousel{inset:0;z-index:3;transform-style:preserve-3d}
+.personCard{
+  left:50%;top:50%;
+  width:158px;height:224px;
+  margin-left:-79px;margin-top:-112px;
+  transition:transform .48s cubic-bezier(.18,.78,.22,1),opacity .38s ease,filter .38s ease,border-color .3s,box-shadow .3s;
+  backface-visibility:visible;
+  transform-origin:50% 50%;
+}
+.carousel.dragging .personCard{transition:none!important}
+.cardPortrait{height:130px}.missionBody{height:94px;padding-top:7px}.missionBody strong{font-size:14px}.missionBody strong em{font-size:16px}
+.personCard.farside{box-shadow:0 7px 20px rgba(0,0,0,.28);border-color:rgba(93,132,163,.48)}
+.personCard.farside .rearLayer{filter:brightness(.58) saturate(.68)}
+.personCard.farside .edgeMark{opacity:.95}
+.cardLayer{position:absolute;inset:0;transition:opacity .18s linear;overflow:hidden;border-radius:inherit}
+.frontLayer{opacity:1}.rearLayer{opacity:0}
+.personCard.farside .frontLayer{opacity:0}.personCard.farside .rearLayer{opacity:1}
+.personCard.frontside .frontLayer{opacity:1}.personCard.frontside .rearLayer{opacity:0}
+/* far side must remain unmistakably visible: silhouettes, not blurred identities */
+.personCard.farside{filter:brightness(.72) saturate(.72)}
+.personCard.farside.target,.personCard.farside.self,.personCard.farside.mine,.personCard.farside.other{filter:brightness(.72) saturate(.72)}
+/* integrated target return marker: on the rim, not a floating UI card */
+.targetBeacon{
+  left:50%;right:auto;bottom:8px;
+  width:auto;height:31px;min-width:92px;
+  padding:0 12px 0 10px;
+  border-radius:999px;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  background:rgba(4,27,46,.88);
+  border:1px solid rgba(255,225,0,.48);
+  transform:translateX(-50%) translateY(8px) scale(.88);
+  box-shadow:0 0 20px rgba(255,225,0,.14),0 10px 22px rgba(0,0,0,.26);
+}
+.targetBeacon.show{transform:translateX(-50%) translateY(0) scale(1)}
+.targetBeacon:before{width:1px;height:18px;right:50%;top:-15px;background:linear-gradient(180deg,rgba(255,225,0,.65),transparent);transform:none}
+.targetBeacon span{font-size:17px}.targetBeacon small{position:static;font-size:8px;letter-spacing:.35px;text-transform:none}
+.stageHint{bottom:13px;left:15px;max-width:145px;line-height:1.25}
+/* Slightly more breathing room between vertical blocks */
+.successArea{margin-top:4px}
+.loopSelectorTitle{margin-top:15px;margin-bottom:8px}
+.loopStrip{padding-top:3px}
+/* Bottom nav: same top-down viewpoint as the main LOOP. Center icon sits lower. */
+.navDock{height:88px}
+.navItem{top:-2px;height:68px}
+.navRail:before{
+  content:"";position:absolute;left:50%;top:4px;width:360px;height:62px;transform:translateX(-50%);
+  border-radius:50%;border-top:1px solid rgba(72,144,197,.18);pointer-events:none;
+}
+@media (max-height:760px) and (orientation:portrait){
+  .stage{height:392px;min-height:392px;margin-bottom:10px}
+  .personCard{width:150px;height:214px;margin-left:-75px;margin-top:-107px}
+  .cardPortrait{height:124px}.missionBody{height:90px}
+  .loopChip{height:67px}.loopChip img{height:50px;width:50px}.miniProgress{left:65px}
+  .successButton{padding:12px 17px}
+}
+
 </style>
 </head>
 <body>
@@ -250,12 +330,14 @@ function navLabel(id){return id==='moi'?'Moi':id==='missions'?'Missions':'LOOP'}
 const navItems={};
 function slotFor(id,cur=current){const i=screenIds.indexOf(id);let d=(i-cur+3)%3;if(d===2)d=-1;return d}
 function navPose(slot){
+  /* 3 positions on the same circular rail. Active (focus=1) is lower,
+     side icons are higher: a slight top-down viewpoint matching the LOOP. */
   const angle=(slot*120-90)*Math.PI/180;
-  const x=130*Math.cos(angle);
-  const y=1+22*(Math.sin(angle)+1);
+  const x=132*Math.cos(angle);
   const focus=(1-Math.sin(angle))/2;
-  const scale=.70+.34*focus;
-  const opacity=.16+.84*Math.max(.08,focus);
+  const y=-4+25*focus;
+  const scale=.73+.37*focus;
+  const opacity=.55+.45*focus;
   return {x,y,scale,opacity,focus};
 }
 function applyNavPose(button,slot){
@@ -286,7 +368,7 @@ function syncNavStatic(){screenIds.forEach(id=>applyNavPose(navItems[id],slotFor
 function animateNav(dir,duration=560){
   cancelAnimationFrame(navRAF);
   const starts={};screenIds.forEach(id=>starts[id]=slotFor(id,current));
-  const t0=performance.now();const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+  const t0=performance.now();const ease=t=>1-Math.pow(1-t,3);
   function frame(now){
     const raw=Math.min(1,(now-t0)/duration),e=ease(raw);
     screenIds.forEach(id=>applyNavPose(navItems[id],starts[id]-dir*e));
@@ -338,13 +420,13 @@ function visiblePeople(l=loops[selectedLoop]){return viewMode==='history'?l.peop
 function visibleIndexForOriginal(originalIndex,l=loops[selectedLoop]){const vis=visiblePeople(l),id=l.people[originalIndex]?.id;return vis.findIndex(p=>p.id===id)}
 function rotationForVisibleIndex(index,n){const base=-(index/n)*Math.PI*2,tau=Math.PI*2;return base+Math.round((rotation-base)/tau)*tau}
 function targetRotation(l=loops[selectedLoop]){const oi=targetOriginalIndex(l),vi=visibleIndexForOriginal(oi,l),vis=visiblePeople(l);return vi<0?rotation:rotationForVisibleIndex(vi,vis.length)}
-function resetToTarget(){rotation=targetRotation();renderCarousel()}
+function resetToTarget(){rotation=targetRotation();layoutCarousel(true)}
 function normalizedDistance(a,b){const tau=Math.PI*2;let d=(a-b)%tau;if(d>Math.PI)d-=tau;if(d<-Math.PI)d+=tau;return Math.abs(d)}
 function updateTargetBeacon(){targetBeacon.classList.toggle('show',normalizedDistance(rotation,targetRotation())>.16)}
 function loopStats(l){const alive=activePeople(l).length,total=l.people.length,out=total-alive;return {alive,total,out,ratio:Math.round(alive/total*100)}}
 function renderLoopStrip(){
   strip.innerHTML='';
-  loops.forEach((l,i)=>{const st=loopStats(l),b=document.createElement('button');b.className='loopChip '+(i===selectedLoop?'selected':'');b.innerHTML=`<img src="${l.thumb}"><div><strong>${l.name}</strong><small>${st.alive} en jeu · ${st.total} au départ</small></div><span class="miniProgress"><i style="width:${st.ratio}%"></i></span>`;b.onclick=()=>{selectedLoop=i;successArea.classList.remove('waiting');successButton.disabled=false;successButton.innerHTML='<span class="checkDisc">✓</span><span>Mission réussie</span>';renderLoopStrip();rotation=0;rotation=targetRotation();renderCarousel()};strip.appendChild(b)})
+  loops.forEach((l,i)=>{const st=loopStats(l),b=document.createElement('button');b.className='loopChip '+(i===selectedLoop?'selected':'');b.innerHTML=`<img src="${l.thumb}"><div><strong>${l.name}</strong><small>${st.alive} en jeu · ${st.total} au départ</small></div><span class="miniProgress"><i style="width:${st.ratio}%"></i></span>`;b.onclick=()=>{selectedLoop=i;successArea.classList.remove('waiting');successButton.disabled=false;successButton.innerHTML='<span class="checkDisc">✓</span><span>Mission réussie</span>';renderLoopStrip();rotation=0;rotation=targetRotation();rebuildCarousel()};strip.appendChild(b)})
 }
 function cardFace(p,l){
   if(p.status==='alive')return `<div class="cardBack"></div>`;
@@ -353,41 +435,99 @@ function cardFace(p,l){
   if(p.status==='mine')return `<span class="historyStamp">✓</span><div class="cardPortrait"><img src="${p.img}" alt="Photo de ${p.name}"><span class="namePill">${p.name}</span><span class="statusPill">À MOI</span></div><div class="missionBody"><small>MISSION GAGNÉE</small><strong>${p.mission||'Mission réussie'}</strong><b>+100 pts</b></div>`;
   return `<span class="historyStamp">✓</span><div class="cardPortrait"><img src="${p.img}" alt="Photo de ${p.name}"><span class="namePill">${p.name}</span><span class="statusPill">SORTI</span></div><div class="missionBody"><small>ÉLIMINÉ</small><strong>Sorti par un autre joueur</strong><b>historique de la LOOP</b></div>`;
 }
-function focusVisibleIndex(index){if(suppressCardClick)return;const vis=visiblePeople(),n=vis.length;if(!n)return;rotation=rotationForVisibleIndex(index,n);renderCarousel()}
-function renderCarousel(){
-  const l=loops[selectedLoop],vis=visiblePeople(l),n=vis.length,st=loopStats(l);
+function focusVisibleIndex(index){
+  if(suppressCardClick)return;
+  const vis=visiblePeople(),n=vis.length;if(!n)return;
+  rotation=rotationForVisibleIndex(index,n);
+  layoutCarousel(true);
+}
+function rearBackMarkup(p){
+  return `<div class="cardBack"><i class="edgeMark"></i></div>`;
+}
+function rebuildCarousel(){
+  const l=loops[selectedLoop],vis=visiblePeople(l),st=loopStats(l);
   activeCount.textContent=st.alive;historyCount.textContent=st.total;
   loopCount.innerHTML=viewMode==='active'?`${st.alive} en jeu<small>sur ${st.total} participants</small>`:`${st.total} cartes<small>${st.alive} encore en jeu</small>`;
   carousel.innerHTML='';
-  const rx=Math.min(stage.clientWidth*.44,205),frontY=stage.clientHeight*.535,ry=Math.min(stage.clientHeight*.12,54);
   vis.forEach((p,i)=>{
-    const angle=(i/n)*Math.PI*2+rotation,z=Math.cos(angle),x=Math.sin(angle)*rx,y=z*ry;
-    const depth=(z+1)/2,scale=.36+depth*.66,opacity=.20+depth*.80,side=Math.sin(angle);
     const c=document.createElement('div');
-    const rear=z<-.10;
-    c.className=`personCard ${p.status} ${rear?'farside':'frontside'} ${p.status==='alive'?'back':''}`;
-    const rotateY=-side*48,tilt=-side*9+(p.status==='target'&&!rear?-1.5:0);
-    c.style.transform=`translate3d(${x}px,${y}px,${z*205}px) scale(${scale}) rotateY(${rotateY}deg) rotateZ(${tilt}deg)`;
-    c.style.opacity=opacity;c.style.zIndex=String(Math.round((z+1)*80));
-    if(rear){c.innerHTML=`<div class="cardBack"><i class="edgeMark"></i></div>`}else{c.innerHTML=cardFace(p,l)}
-    c.addEventListener('click',()=>focusVisibleIndex(i));carousel.appendChild(c)
+    c.className=`personCard ${p.status} ${p.status==='alive'?'back':''}`;
+    c.dataset.personId=p.id;c.dataset.visibleIndex=String(i);
+    c.innerHTML=`<div class="cardLayer frontLayer">${cardFace(p,l)}</div><div class="cardLayer rearLayer">${rearBackMarkup(p)}</div>`;
+    c.addEventListener('click',()=>{
+      const current=visiblePeople(l);const idx=current.findIndex(x=>x.id===p.id);
+      if(idx>=0)focusVisibleIndex(idx);
+    });
+    carousel.appendChild(c);
   });
-  document.getElementById('orbit').style.width=viewMode==='active'?`min(88%,${Math.max(310,Math.min(405,st.alive*15))}px)`:'min(92%,410px)';
+  updateOrbitSize();
+  layoutCarousel(false);
+}
+function updateOrbitSize(){
+  const st=loopStats(loops[selectedLoop]);
+  const n=viewMode==='active'?st.alive:st.total;
+  const px=Math.max(350,Math.min(432,338+n*3.4));
+  document.getElementById('orbit').style.width=`min(96%,${px}px)`;
+}
+function layoutCarousel(animate=true){
+  const l=loops[selectedLoop],vis=visiblePeople(l),n=vis.length;if(!n)return;
+  const cards=[...carousel.querySelectorAll('.personCard')];
+  if(cards.length!==n){rebuildCarousel();return}
+  const w=stage.clientWidth,h=stage.clientHeight;
+  /* Ring in a horizontal plane, seen slightly from above: front is lower,
+     rear is higher. All N participants occupy the circumference. */
+  const rx=Math.min(w*.465,218);
+  const ry=Math.min(Math.max(h*.145,56),70);
+  cards.forEach((c,i)=>{
+    const angle=(i/n)*Math.PI*2+rotation;
+    const depth=Math.cos(angle);             // +1 front, -1 rear
+    const side=Math.sin(angle);
+    const x=side*rx;
+    const y=depth*ry;
+    const d=(depth+1)/2;
+    /* Rear remains readable as a sequence of cards, but identities are hidden
+       because we show their physical backs there. */
+    const scale=.47+d*.57;
+    const opacity=.58+d*.42;
+    const rear=depth<-.08;
+    c.classList.toggle('farside',rear);c.classList.toggle('frontside',!rear);
+    const rotateY=-side*38;
+    const tilt=-side*6+(c.classList.contains('target')&&!rear?-1.2:0);
+    c.style.transition=animate?'transform .48s cubic-bezier(.18,.78,.22,1),opacity .38s ease,filter .38s ease':'none';
+    c.style.transform=`translate3d(${x}px,${y}px,0) scale(${scale}) rotateY(${rotateY}deg) rotateZ(${tilt}deg)`;
+    c.style.opacity=opacity;
+    c.style.zIndex=String(20+Math.round((depth+1)*90));
+    /* keep rear visible but subdued; no identity blur is needed */
+    c.style.filter=rear?`brightness(${(.64+.08*d).toFixed(2)}) saturate(.72)`:'none';
+  });
+  if(!animate)requestAnimationFrame(()=>cards.forEach(c=>c.style.transition=''));
   updateTargetBeacon();
 }
 viewToggle.querySelectorAll('button').forEach(btn=>btn.onclick=()=>{
   if(btn.dataset.mode===viewMode)return;
   const previousTarget=targetPerson()?.id;viewMode=btn.dataset.mode;
   viewToggle.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.mode===viewMode));
-  rotation=0;const l=loops[selectedLoop],oi=l.people.findIndex(p=>p.id===previousTarget),vi=visibleIndexForOriginal(oi,l),vis=visiblePeople(l);rotation=vi<0?0:-(vi/vis.length)*Math.PI*2;
-  carousel.style.filter='brightness(1.25)';setTimeout(()=>carousel.style.filter='',300);renderCarousel();
+  const l=loops[selectedLoop],oi=l.people.findIndex(p=>p.id===previousTarget);
+  const vis=visiblePeople(l),vi=visibleIndexForOriginal(oi,l);
+  rotation=vi<0?0:-(vi/vis.length)*Math.PI*2;
+  rebuildCarousel();
+  carousel.animate([{filter:'brightness(1.18)'},{filter:'brightness(1)'}],{duration:360,easing:'ease-out'});
 });
-targetBeacon.onclick=e=>{e.stopPropagation();resetToTarget()};
-stage.addEventListener('pointerdown',e=>{if(e.target.closest('.targetBeacon,.viewToggle'))return;dragging=true;dragTravel=0;lastX=e.clientX;carousel.classList.add('dragging');stage.setPointerCapture(e.pointerId)});
-stage.addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-lastX;dragTravel+=Math.abs(dx);rotation+=dx*.0075;lastX=e.clientX;renderCarousel()});
-function endStageDrag(){if(!dragging)return;dragging=false;carousel.classList.remove('dragging');suppressCardClick=dragTravel>8;setTimeout(()=>{suppressCardClick=false},30);updateTargetBeacon()}
-stage.addEventListener('pointerup',endStageDrag);stage.addEventListener('pointercancel',endStageDrag);window.addEventListener('resize',renderCarousel);
-renderLoopStrip();setTimeout(()=>{rotation=targetRotation();renderCarousel()},90);
+targetBeacon.onclick=e=>{e.stopPropagation();rotation=targetRotation();layoutCarousel(true)};
+stage.addEventListener('pointerdown',e=>{
+  if(e.target.closest('.targetBeacon,.viewToggle'))return;
+  dragging=true;dragTravel=0;lastX=e.clientX;carousel.classList.add('dragging');stage.setPointerCapture(e.pointerId)
+});
+stage.addEventListener('pointermove',e=>{
+  if(!dragging)return;const dx=e.clientX-lastX;dragTravel+=Math.abs(dx);rotation+=dx*.0072;lastX=e.clientX;layoutCarousel(false)
+});
+function endStageDrag(){
+  if(!dragging)return;dragging=false;carousel.classList.remove('dragging');
+  suppressCardClick=dragTravel>8;setTimeout(()=>{suppressCardClick=false},45);updateTargetBeacon()
+}
+stage.addEventListener('pointerup',endStageDrag);stage.addEventListener('pointercancel',endStageDrag);
+window.addEventListener('resize',()=>layoutCarousel(false));
+renderLoopStrip();setTimeout(()=>{rotation=targetRotation();rebuildCarousel()},90);
 
 
 const toast=document.getElementById('toast');function showToast(title,text,icon='✓'){document.getElementById('toastIcon').textContent=icon;toast.querySelector('strong').textContent=title;toast.querySelector('span').textContent=text;toast.classList.add('show');clearTimeout(showToast.t);showToast.t=setTimeout(()=>toast.classList.remove('show'),3200)}
@@ -411,7 +551,7 @@ function completeMission(){
  showToast('Mission validée ✓',`${old.name} confirme sa défaite. La chaîne active se referme…`,'✓');sparks();
  carousel.style.transition='transform .52s cubic-bezier(.2,.82,.2,1),filter .52s';carousel.style.transform='scale(.76) rotateZ(-7deg)';carousel.style.filter='brightness(1.35)';
  setTimeout(()=>{
-   rotation=0;rotation=targetRotation();carousel.style.transform='scale(1) rotateZ(0)';carousel.style.filter='';renderCarousel();renderLoopStrip();
+   rotation=0;rotation=targetRotation();carousel.style.transform='scale(1) rotateZ(0)';carousel.style.filter='';rebuildCarousel();renderLoopStrip();
    setTimeout(()=>{carousel.style.transition='';successArea.classList.remove('waiting');successButton.disabled=false;successButton.innerHTML='<span class="checkDisc">✓</span><span>Mission réussie</span>';const t=targetPerson(l);showToast('Nouvelle cible',`${t?.name||'Nouvelle cible'} est maintenant ta cible. Sa mission est révélée.`,'◎')},700)
  },540)
 }
