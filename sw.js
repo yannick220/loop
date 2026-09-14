@@ -1,4 +1,4 @@
-const CACHE = 'loop-v58-pwa-1';
+const CACHE = 'loop-v93-pwa-1';
 const ASSETS = [
   './',
   './index.html',
